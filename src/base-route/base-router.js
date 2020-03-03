@@ -15,10 +15,4 @@ mongoose.connect(mongoURI, connectOptions, (err, db) => {
   console.log('Connected to mongodb... yay...')
 });
 
-// router.get('/', (req, res) => {
-//   res.sendFile('../../public/', {
-//     root: __dirname,
-//   });
-// });
-
 module.exports = router;
