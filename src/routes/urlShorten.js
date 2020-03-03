@@ -6,9 +6,10 @@ const shortId = require('shortid');
 const errorUrl = 'http://localhost/error';
 
 // /api/item/:code
-router.get('/item/:code', async (req, res) => {
-  const urlCode = req.params.code;
-  const item = await UrlShorten.findOne()({ urlCode: urlCode })
+router.get('/:id', async (req, res) => {
+  const urlCode = req.params.id;
+  // check if short code in db
+  const item = await UrlShorten.findOne({ urlCode: urlCode }) 
   
       if (item) {
         return res.redirect(item.originalUrl)
@@ -19,8 +20,8 @@ router.get('/item/:code', async (req, res) => {
 
 router.post('/item', async (req, res) => {
   const { originalUrl, shortBaseUrl } = req.body;
-  if (validUrl.isUri(shortBaseUrl)) {
-    } else {
+  
+  if (!validUrl.isUri(shortBaseUrl)) {
     return res.status(401).json('Invalid Base Url');
   }
 
@@ -29,7 +30,6 @@ router.post('/item', async (req, res) => {
   const updatedAt = new Date();
 
   if (validUrl.isUri(originalUrl)) {
-    console.log('original url: ', validUrl.isUri(originalUrl)) // original url
     try {
       const item = await UrlShorten.findOne({ originalUrl: originalUrl });
       if (item) {
