@@ -12,7 +12,7 @@ const connectOptions = {
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoURI, connectOptions, (err, db) => {
   if (err) console.log('Error: ', err);
-  console.log('Connected to mongodb... yay...')
+  console.log('Connected to mongodb...');
 });
 
 module.exports = router;

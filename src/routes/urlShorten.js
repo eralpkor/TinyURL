@@ -1,5 +1,4 @@
 const router = require('express').Router();
-// const mongoose = require('mongoose');
 const validUrl = require('valid-url');
 const UrlShorten = require('../models/UrlShorten.js')
 const shortId = require('shortid');
