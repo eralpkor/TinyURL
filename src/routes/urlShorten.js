@@ -35,7 +35,7 @@ router.post('/item', async (req, res) => {
         res.status(200).json(item)
         } else {
           shortUrl = shortBaseUrl + '/' + urlCode;
-          console.log('this is short url: ', shortUrl)
+          // console.log('this is short url: ', shortUrl)
           const item = new UrlShorten({
             originalUrl,
             shortUrl,
